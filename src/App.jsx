@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
+import ReservationPage from "./pages/ReservationPage";
 
 const infoRestaurante = {
   nombre: "Burger Hub",
@@ -52,6 +53,9 @@ export default function App() {
             
             {/* Si la ruta es "/conocenos" muestra About */}
             <Route path="/conocenos" element={<About />} />
+
+            {/*   Rutas a reserva*/}
+            <Route path="/reserva" element={<ReservationPage />} />
           </Routes>
         </div>
 
@@ -80,4 +84,6 @@ export default function App() {
       </div>
     </Router>
   );
+
+  
 }

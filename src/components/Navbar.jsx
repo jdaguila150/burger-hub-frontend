@@ -21,6 +21,16 @@ export default function Navbar({ nombreRestaurante, carritoItems }) {
                         <li className="nav-item">
                             <Link className="nav-link fs-5" to="/conocenos">Conócenos</Link>
                         </li>
+                        {/* El botón de reserva con mejor formato */}
+                        <li className="nav-item ms-lg-3 mt-1"> {/* ms-lg-3 da separación a la izquierda en pantallas grandes */}
+                            <Link 
+                            className="btn btn-warning fw-bold px-4 shadow-sm" 
+                            to="/reserva"
+                            style={{ borderRadius: '25px' }} // Bordes redondeados para un look más moderno
+                            >
+                            ¡Reserva ahora!
+                            </Link>
+                        </li>
                     </ul>
 
                     <div className="d-flex align-items-center mt-3 mt-lg-0">
