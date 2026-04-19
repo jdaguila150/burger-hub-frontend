@@ -6,7 +6,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 // Importamos nuestros componentes modulares
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Home from './pages/Home';
+import Home from './pages/Menu';
 import About from './pages/About';
 
 const infoRestaurante = {
@@ -25,7 +25,7 @@ export default function App() {
     fetch('http://localhost:3000/api/menu')
       .then(res => res.json())
       .then(datos => setMenu(datos))
-      .catch(error => console.error("Error backend", error));
+      .catch(error => console.error("Error backend", error));      
   }, []);
 
   const agregarAlCarrito = (platillo) => {
@@ -47,11 +47,11 @@ export default function App() {
         {/* AQUÍ ES DONDE OCURRE LA MAGIA DEL ROUTER */}
         <div className="flex-grow-1">
           <Routes>
-            {/* Si la ruta es "/" muestra Home y le pasamos los datos */}
-            <Route path="/" element={<Home menu={menu} agregarAlCarrito={agregarAlCarrito} />} />
+            {/* Ahora "/" es la página de Conócenos/Landing */}
+            <Route path="/" element={<About />} />
             
-            {/* Si la ruta es "/conocenos" muestra About */}
-            <Route path="/conocenos" element={<About />} />
+            {/* Ahora "/menu" es tu página del Carrusel y Platillos */}
+            <Route path="/menu" element={<Home menu={menu} agregarAlCarrito={agregarAlCarrito} />} />
           </Routes>
         </div>
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import ReservationForm from '../components/ReservationForm';
+import { Link, useLocation } from 'react-router-dom';
+
 
 export default function About() {
     return (
@@ -24,6 +26,15 @@ export default function About() {
                             <p className="text-muted">
                                 Cada carne es molida diariamente y nuestro pan brioche se hornea cada mañana para asegurar que la experiencia sea perfecta desde el primer bocado hasta el último.
                             </p>
+                        <div className="d-flex gap-3 mt-5">
+                            {/* Este es el botón crucial que conecta las dos páginas */}
+                            <Link to="/menu" className="btn btn-warning btn-lg px-5 py-3 rounded-pill fw-bold shadow">
+                                🍔 Ver el Menú Completo
+                            </Link>
+                            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="btn btn-outline-dark btn-lg px-4 py-3 rounded-pill fw-bold">
+                                Síguenos
+                            </a>
+                        </div>
                         </div>
                     </div>
                 </div>

@@ -7,7 +7,7 @@ const carruselData = [
     { id: 3, titulo: "Nuevas Entradas", subtitulo: "Prueba nuestras papas gajo con receta secreta.", imagen: "https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format&fit=crop&w=1500&q=80" }
 ];
 
-export default function Home({ menu, agregarAlCarrito }) {
+export default function Menu({ menu, agregarAlCarrito }) {
     const [filtroActivo, setFiltroActivo] = useState("Todos");
 
     // Derivados para los filtros
@@ -42,7 +42,7 @@ export default function Home({ menu, agregarAlCarrito }) {
                                     <h1 className="display-2 fw-bolder text-white text-uppercase tracking-wide mb-3 shadow-sm">{slide.titulo}</h1>
                                     <p className="fs-4 text-light mb-5 fw-light">{slide.subtitulo}</p>
                                     <a href="#menu" className="btn btn-warning btn-lg fw-bold px-5 py-3 rounded-pill shadow">
-                                        VER EL MENÚ Y PEDIR
+                                        VER EL MENÚ
                                     </a>
                                 </div>
                             </div>
@@ -131,14 +131,14 @@ export default function Home({ menu, agregarAlCarrito }) {
                                     </div>
                                     <p className="card-text text-muted mb-4">{platillo.descripcion}</p>
 
-                                    <div className="mt-auto">
+                                    {/* <div className="mt-auto">
                                         <button
                                             className="btn btn-dark w-100 fw-bold py-2 rounded-3 text-uppercase"
                                             onClick={() => agregarAlCarrito(platillo)}
                                         >
                                             + Agregar
                                         </button>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>
