@@ -6,7 +6,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 // Importamos nuestros componentes modulares
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Home from './pages/Menu';
+import Menu from './pages/Menu';
 import About from './pages/About';
 import ReservationPage from "./pages/ReservationPage";
 
@@ -51,8 +51,7 @@ export default function App() {
             {/* Ahora "/" es la página de Conócenos/Landing */}
             <Route path="/" element={<About />} />
             
-            {/* Si la ruta es "/conocenos" muestra About */}
-            <Route path="/conocenos" element={<About />} />
+            <Route path="/menu" element={<Menu menu={menu} agregarAlCarrito={agregarAlCarrito} />} />
 
             {/*   Rutas a reserva*/}
             <Route path="/reserva" element={<ReservationPage />} />

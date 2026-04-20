@@ -2,7 +2,6 @@ import React from 'react';
 import ReservationForm from '../components/ReservationForm';
 import { Link, useLocation } from 'react-router-dom';
 
-import { Link } from 'react-router-dom'; // <--- ESTA LÍNEA ES IMPRESCINDIBLE
 
 export default function About() {
     return (

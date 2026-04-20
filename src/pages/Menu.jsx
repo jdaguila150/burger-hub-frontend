@@ -2,14 +2,23 @@ import React, { useState } from 'react';
 
 // Movimos los datos del carrusel aquí porque solo le pertenecen al Inicio
 const carruselData = [
-    { id: 1, titulo: "Sabor a la parrilla", subtitulo: "Ingredientes 100% frescos todos los días.", imagen: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1500&q=80" },
-    { id: 2, titulo: "¡Promo de Locura!", subtitulo: "2x1 en hamburguesas clásicas todos los martes.", imagen: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1500&q=80" },
-    { id: 3, titulo: "Nuevas Entradas", subtitulo: "Prueba nuestras papas gajo con receta secreta.", imagen: "https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format&fit=crop&w=1500&q=80" }
+    {
+        id: 1,
+        titulo: "Nuestro Menú Digital",
+        subtitulo: "Lleva nuestra carta siempre contigo en formato PDF.",
+        imagen: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1500&q=80",
+        esDescarga: true,
+        archivo: "/menu_tacoGame.pdf", 
+        textoBoton: "⬇️ Descargar Menú (PDF)"
+    },
+    { id: 2, titulo: "Sabor a la parrilla", subtitulo: "Ingredientes 100% frescos todos los días.", imagen: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1500&q=80" },
+    { id: 3, titulo: "¡Promo de Locura!", subtitulo: "2x1 en hamburguesas clásicas todos los martes.", imagen: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1500&q=80" },
+    { id: 4, titulo: "Nuevas Entradas", subtitulo: "Prueba nuestras papas gajo con receta secreta.", imagen: "https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format&fit=crop&w=1500&q=80" }
 ];
 
 export default function Menu({ menu, agregarAlCarrito }) {
     const [filtroActivo, setFiltroActivo] = useState("Todos");
-
+    const menuSeguro = menu || [];
     // Derivados para los filtros
     const categoriasUnicas = ["Todos", ...new Set(menu.map(item => item.categoria))];
     const menuFiltrado = filtroActivo === "Todos" ? menu : menu.filter(item => item.categoria === filtroActivo);
@@ -19,17 +28,9 @@ export default function Menu({ menu, agregarAlCarrito }) {
             {/* --- HERO SECTION (CARRUSEL) CON 3 SLIDES --- */}
             <header>
                 <div id="heroCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-
                     <div className="carousel-indicators">
                         {carruselData.map((_, index) => (
-                            <button
-                                key={index}
-                                type="button"
-                                data-bs-target="#heroCarousel"
-                                data-bs-slide-to={index}
-                                className={index === 0 ? "active" : ""}
-                                aria-current={index === 0 ? "true" : "false"}
-                            ></button>
+                            <button key={index} type="button" data-bs-target="#heroCarousel" data-bs-slide-to={index} className={index === 0 ? "active" : ""}></button>
                         ))}
                     </div>
 
@@ -39,23 +40,35 @@ export default function Menu({ menu, agregarAlCarrito }) {
                                 <div className="position-absolute w-100 h-100" style={{ backgroundColor: 'rgba(0,0,0,0.6)', zIndex: 1 }}></div>
                                 <img src={slide.imagen} className="d-block w-100 h-100" style={{ objectFit: 'cover' }} alt={slide.titulo} />
                                 <div className="carousel-caption d-flex flex-column justify-content-center align-items-center h-100" style={{ zIndex: 2, top: 0 }}>
-                                    <h1 className="display-2 fw-bolder text-white text-uppercase tracking-wide mb-3 shadow-sm">{slide.titulo}</h1>
+                                    <h1 className="display-2 fw-bolder text-white text-uppercase tracking-wide mb-3">{slide.titulo}</h1>
                                     <p className="fs-4 text-light mb-5 fw-light">{slide.subtitulo}</p>
-                                    <a href="#menu" className="btn btn-warning btn-lg fw-bold px-5 py-3 rounded-pill shadow">
-                                        VER EL MENÚ
-                                    </a>
+
+                                    {/* LÓGICA DE BOTÓN DINÁMICO */}
+                                    {slide.esDescarga ? (
+                                        /* Botón de descarga para el PDF */
+                                        <a
+                                            href={slide.archivo}
+                                            download
+                                            className="btn btn-warning btn-lg fw-bold px-5 py-3 rounded-pill shadow animate__animated animate__pulse animate__infinite"
+                                        >
+                                            {slide.textoBoton}
+                                        </a>
+                                    ) : (
+                                        /* Botón normal de navegación */
+                                        <a href="#menu" className="btn btn-warning btn-lg fw-bold px-5 py-3 rounded-pill shadow">
+                                            {slide.textoBoton}
+                                        </a>
+                                    )}
                                 </div>
                             </div>
                         ))}
                     </div>
 
                     <button className="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" style={{ zIndex: 3 }}>
-                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span className="visually-hidden">Anterior</span>
+                        <span className="carousel-control-prev-icon"></span>
                     </button>
                     <button className="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" style={{ zIndex: 3 }}>
-                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span className="visually-hidden">Siguiente</span>
+                        <span className="carousel-control-next-icon"></span>
                     </button>
                 </div>
             </header>

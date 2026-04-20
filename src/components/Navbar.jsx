@@ -7,24 +7,28 @@ export default function Navbar({ nombreRestaurante, carritoItems }) {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm py-3">
-           <div className="container">
-    <Link className="navbar-brand fs-3 fw-bold d-flex align-items-center" to="/">
-        🍔 <span className="ms-2">{nombreRestaurante}</span>
-    </Link>
+            <div className="container">
+                <Link className="navbar-brand fs-3 fw-bold d-flex align-items-center" to="/">
+                    🍔 <span className="ms-2">{nombreRestaurante}</span>
+                </Link>
 
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span className="navbar-toggler-icon"></span>
-    </button>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
 
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
+                    {/* ms-auto empuja todo a la derecha, gap-3 separa los botones entre sí */}
+                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
                         <li className="nav-item">
-                            <Link className="nav-link fs-5" to="/">Inicio</Link>
+                            <Link className={`nav-link fs-5 px-3 rounded ${location.pathname === '/' ? 'active fw-bold bg-dark text-white' : ''}`} to="/">
+                                Conócenos
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link fs-5" to="/conocenos">Conócenos</Link>
+                            <Link className={`nav-link fs-5 px-3 rounded ${location.pathname === '/menu' ? 'active fw-bold bg-dark text-white' : ''}`} to="/menu">
+                                Menú
+                            </Link>
                         </li>
-                        {/* El botón de reserva con mejor formato */}
                         <li className="nav-item ms-lg-3 mt-1"> {/* ms-lg-3 da separación a la izquierda en pantallas grandes */}
                             <Link 
                             className="btn btn-warning fw-bold px-4 shadow-sm" 
@@ -35,8 +39,12 @@ export default function Navbar({ nombreRestaurante, carritoItems }) {
                             </Link>
                         </li>
                     </ul>
-
-                    <div className="d-flex align-items-center mt-3 mt-lg-0">
+                </div>
+            </div>
+        </nav>
+    );
+}
+{/* <div className="d-flex align-items-center mt-3 mt-lg-0">
                         <button
                             className="btn btn-warning fw-bold px-4 rounded-pill position-relative shadow-sm"
                             data-bs-toggle="offcanvas"
@@ -49,9 +57,4 @@ export default function Navbar({ nombreRestaurante, carritoItems }) {
                                 </span>
                             )}
                         </button>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    );
-}
+                    </div> */}
